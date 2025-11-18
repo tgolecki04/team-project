@@ -22,7 +22,7 @@ Poniżej znajdują się informacje kontaktowe i wiele więcej na temat każdego 
 ::: {style="margin:0; padding:0;"}
 ![![](images/clipboard-3609703868.png){style="margin:0; padding:0;"}](images/Mandatory-01.png){style="margin:0; padding:0;" fig-align="center"}
 
-![](images/Contents Page.png){style="margin:0; padding:0;" fig-align="center"}
+![](images/Contents%20Page.png){style="margin:0; padding:0;" fig-align="center"}
 
 ![](images/Mandatory-02.png){style="margin:0; padding:0;" fig-align="center"}
 :::
