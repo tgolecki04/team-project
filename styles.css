@@ -44,3 +44,8 @@ table td, table th {
   font-size: 17px;
   text-align: center;
 }
+
+p:has(img) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
