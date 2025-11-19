@@ -50,10 +50,41 @@ p:has(img) {
   padding: 0 !important;
 }
 
-.img-stack img,
-.img-stack div,
-.img-stack figure {
+/* usuń WSZYSTKIE marginesy i odstępy tylko wewnątrz .cv */
+.cv .quarto-figure,
+.cv .figure,
+.cv .figure > p,
+.cv figure,
+.cv p:has(img),
+.cv .img-fluid,
+.cv .figure-img {
   margin: 0 !important;
   padding: 0 !important;
-  display: block;
+  border: 0 !important;
 }
+
+/* upewnij się, że obrazki są blokami i wypełniają szerokość */
+.cv .quarto-figure img,
+.cv .figure img,
+.cv img.figure-img,
+.cv img.img-fluid {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* bootstrapowe margin-bottom dla figure */
+.cv figure {
+  margin-bottom: 0 !important;
+}
+
+/* div .quarto-figure nie dodaje odstępów */
+.cv .quarto-figure {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* bezpieczeństwo: wyłączenie ramek obrazków tylko w .cv */
+.cv img {
+  border: 0 !important;
+}
+

@@ -19,18 +19,18 @@ Poniżej znajdują się informacje kontaktowe i wiele więcej na temat każdego 
 
 ## Tomasz Golecki
 
-::: {style="margin:0; padding:0;"}
-![](images/Mandatory.png){fig-align="center"}
+::: cv
+![](images/Mandatory.png){style="display: block; margin: 0px; padding: 0px" fig-align="center"}
 
-![](images/clipboard-3609703868.png){fig-align="center"}
+![](images/clipboard-3609703868.png){style="display: block; margin: 0px; padding: 0px;" fig-align="center"}
 
-![](images/Contents Page.png){fig-align="center"}
+![](images/Contents%20Page.png){style="display: block; margin: 0px; padding: 0px;" fig-align="center"}
 
-![](images/clipboard-3609703868.png){fig-align="center"}
+![](images/clipboard-3609703868.png){style="display: block; margin: 0px; padding: 0px;" fig-align="center"}
 :::
 
-fg
-
 ## Tomasz Hanusek
+
+nowy css fg
 
 ## Damian Spodar
