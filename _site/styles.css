@@ -50,7 +50,6 @@ p:has(img) {
   padding: 0 !important;
 }
 
-<style>
 /* usuń WSZYSTKIE marginesy i odstępy tylko wewnątrz .cv */
 .cv .quarto-figure,
 .cv .figure,

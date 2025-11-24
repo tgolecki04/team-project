@@ -22,7 +22,7 @@ library(tidyverse)
 library(corrplot)
 library(ggcorrplot)
 library(ggthemes)
-library(hrbrthemes)
+library(tinythemes)
 library(kableExtra)
 library(rlang)
 library(gridExtra)
@@ -182,7 +182,7 @@ NA_count <- select(NA_count, c(2,1))
 
 p <- ggplot(NA_count, aes(x = var, y = count, fill = "#fc9d03")) +
   geom_col(show.legend = FALSE) +
-  theme_ipsum() +
+  theme_ipsum_rc() +
   geom_text(aes(label = count), vjust = -0.5) + 
   expand_limits(y = max(NA_count$count) * 1.1) +
   labs(title = "Liczba wartości NA w zmiennych")
@@ -201,7 +201,7 @@ NA_df <- data.frame(NA_w_wierszu = rowSums(is.na(badania))) |>
 
 p <- NA_df |> ggplot(aes(NA_w_wierszu, liczebnosc, fill = "#fc9d03")) +
   geom_col(show.legend = FALSE) +
-  theme_ipsum() +
+  theme_ipsum_rc() +
   geom_text(aes(label = liczebnosc), vjust = -0.5) + 
   expand_limits(y = max(NA_df$liczebnosc) * 1.1) +
   labs(title = "Liczba wartości NA w rekordach")
@@ -236,7 +236,7 @@ NA_count <- select(NA_count, c(2,1))
 
 p <- ggplot(NA_count, aes(x = var, y = count, fill = "#fc9d03")) +
   geom_col(show.legend = FALSE) +
-  theme_ipsum() +
+  theme_ipsum_rc() +
   geom_text(aes(label = count), vjust = -0.5) + 
   expand_limits(y = max(NA_count$count) * 1.1) +
   labs(title = "Liczba wartości NA w zmiennych")
@@ -319,6 +319,15 @@ round(data.frame(t(statystyki_po))[c(2:8,10:12), ], 3)
 
 Sprawdzając podstawowe statystki widzimy, że uzupełniając dane zachowaliśmy ich strukturę. Różnica pomiędzy wartościami statystyk polega najczęściej na zmianie części tysięcznych lub setnych, więc wartości `NA` zostały bardzo dobrze odwzorowane. Teraz możemy zrobić analizę wstępną naszego zbioru danych, aby następnie przejść do stworzenia modeli predykcyjnych oraz głębszej analizy.
 
+```{r}
+badania <- mutate(badania, ID = 1:nrow(badania))
+zdrowi <- badania |> 
+  subset(TenYearCHD == "No")
+
+chorzy <- badania |> 
+  subset(TenYearCHD == "Yes")
+```
+
 ### Wstępna Analiza
 
 #### Statystyki
@@ -348,7 +357,7 @@ zmienna_wykres <- function(dane, typ_zmiennej, typ_wykresu) {
     if (typ_wykresu == "barplot") {
     p <- ggplot(dane, aes(x = !!sym(kolumna), fill = !!sym(kolumna))) +
       geom_bar(show.legend = FALSE) +
-      theme_ipsum() +
+      theme_ipsum_rc() +
       ggtitle(kolumna) +
       scale_fill_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041"))
       
@@ -366,14 +375,14 @@ zmienna_wykres <- function(dane, typ_zmiennej, typ_wykresu) {
     } else if (typ_wykresu == "histogram") {
       p <- ggplot(dane, aes(x = !!sym(kolumna))) +
         geom_histogram(bins = 20, show.legend = FALSE, fill = "#6AAED9") +
-        theme_ipsum() +
+        theme_ipsum_rc() +
         ggtitle(kolumna)
         
       
     } else if (typ_wykresu == "violin") {
       p <- ggplot(dane, aes(x = "", y = !!sym(kolumna), fill = "#6AAED9")) +
         geom_violin(show.legend = FALSE) +
-        theme_ipsum() +
+        theme_ipsum_rc() +
         ggtitle(kolumna) +
         scale_fill_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041"))
     } else {
@@ -508,43 +517,256 @@ Sprawdźmy jak będzie wyglądać zestawienie wartości ciśnienia skurczowego o
 ```{r}
 p1 <- ggplot(badania, aes(x = diaBP, y = sysBP, color = sex, shape = sex)) +
   geom_point() +
-  theme_ipsum() +
+  theme_ipsum_rc() +
   ggtitle("sysBP ~ diaBP") +
   scale_color_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041")) +
   theme(legend.position = "bottom")
 
-p2 <- ggplot(badania, aes(x = diaBP, y = sysBP, color = education, shape = education)) +
-  geom_point() +
-  theme_ipsum() +
+ggsave("images/plots/sysBP_diaBP_bySex_point.jpg", p1)
+
+```
+
+![](images/plots/sysBP_diaBP_bySex_point.jpg){fig-align="center"}
+
+Ze względu na dużą liczbę rekordów, punkty zaznaczone na wykresie typu `scatter plot` tworzą masywną chmurę punktów, utrudniając interpretację. Aby ułatwić analizę na podstawie wykresu posłużymy się wykresami gęstości porównując dodatkowo wpływ innych zmiennych na wartość ciśnienia rozkurczowego oraz skurczowego.
+
+#### Ciśnienie rozkurczowe
+
+```{r}
+p1 <- ggplot(badania, aes(x = diaBP, color = sex)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  ggtitle("sysBP ~ diaBP") +
+  scale_color_manual(values = c("#6AAED9", "#F2A391")) +
+  theme(legend.position = "bottom")
+
+p2 <- ggplot(badania, aes(x = diaBP, color = education)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
   ggtitle("sysBP ~ diaBP") +
   scale_color_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041")) +
   theme(legend.position = "bottom")
 
-p3 <- ggplot(badania, aes(x = diaBP, y = sysBP, color = currentSmoker, shape = currentSmoker)) +
-  geom_point() +
-  theme_ipsum() +
+p3 <- ggplot(badania, aes(x = diaBP, color = currentSmoker)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
   ggtitle("sysBP ~ diaBP") +
   scale_color_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041")) +
   theme(legend.position = "bottom")
 
-ggsave("images/plots/sysBP_diaBP_bySex.jpg", p1)
-ggsave("images/plots/sysBP_diaBP_byEducation.jpg", p2)
-ggsave("images/plots/sysBP_diaBP_byCurrentSmoker.jpg", p3)
+ggsave("images/plots/diaBP_bySex.jpg", p1)
+ggsave("images/plots/diaBP_byEducation.jpg", p2)
+ggsave("images/plots/diaBP_byCurrentSmoker.jpg", p3)
 ```
 
 ::: panel-tabset
-### f
+### Względem zmiennej sex
 
-![](images/plots/sysBP_diaBP_bySex.jpg){fig-align="center"}
+![](images/plots/diaBP_bySex.jpg){fig-align="center"}
 
-### fg
+### Względem zmiennej education
 
-![](images/plots/sysBP_diaBP_byEducation.jpg){fig-align="center"}
+![](images/plots/diaBP_byEducation.jpg){fig-align="center"}
 
-### ghj
+### Względem zmiennej currentSmoker
 
-![](images/plots/sysBP_diaBP_byCurrentSmoker.jpg){fig-align="center"}
+![](images/plots/diaBP_byCurrentSmoker.jpg){fig-align="center"}
 :::
+
+analiza::
+
+#### Ciśnienie skurczowe
+
+Analogicznie postepujemy dla zmiennej `sysBP`. Pamiętamy że omawiane zmienne są silnie ze sobą skorelowane, więc spodziewamy się podobnych rezultatów.
+
+```{r}
+p1 <- ggplot(badania, aes(x = sysBP, color = sex)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  ggtitle("sysBP ~ diaBP") +
+  scale_color_manual(values = c("#6AAED9", "#F2A391")) +
+  theme(legend.position = "bottom")
+
+p2 <- ggplot(badania, aes(x = sysBP, color = education)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  ggtitle("sysBP ~ diaBP") +
+  scale_color_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041")) +
+  theme(legend.position = "bottom")
+
+p3 <- ggplot(badania, aes(x = sysBP, color = currentSmoker)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  ggtitle("sysBP ~ diaBP") +
+  scale_color_manual(values = c("#6AAED9", "#F2A391", "#2C5DBF", "#F25041")) +
+  theme(legend.position = "bottom")
+
+ggsave("images/plots/sysBP_bySex.jpg", p1)
+ggsave("images/plots/sysBP_byEducation.jpg", p2)
+ggsave("images/plots/sysBP_byCurrentSmoker.jpg", p3)
+```
+
+::: panel-tabset
+### Względem zmiennej sex
+
+![](images/plots/sysBP_bySex.jpg){fig-align="center"}
+
+### Względem zmiennej education
+
+![](images/plots/sysBP_byEducation.jpg){fig-align="center"}
+
+### Względem zmiennej currentSmoker
+
+![](images/plots/sysBP_byCurrentSmoker.jpg){fig-align="center"}
+:::
+
+analiza::
+
+#### Zakres pracy serca, a ryzyko zawału
+
+```{r}
+p <- badania |> 
+  mutate(range_diff = sysBP - diaBP) |> 
+  arrange(range_diff) |> 
+  ggplot(aes(x = range_diff, color = TenYearCHD)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+ggsave("images/plots/range_density.jpg", p)
+```
+
+![](images/plots/range_density.jpg){fig-align="center"}
+
+#### Wartość ciśnienia skurczowego jako czynnik ryzyka
+
+:analiza::
+
+```{r}
+#| warning: false
+p <- badania |> 
+  ggplot(aes(x = TenYearCHD, y = sysBP, color = sex)) +
+  geom_boxplot() +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+```
+
+```{r}
+#| warning: false
+
+p3 <- badania |> 
+  ggplot(aes(x = sysBP, color = TenYearCHD)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+```
+
+### Analiza wartości tętna 
+
+```{r}
+#| warning: false
+p <- badania |> 
+  ggplot(aes(x = heartRate, fill = TenYearCHD)) +
+  geom_histogram(binwidth = 5) +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+p
+```
+
+```{r}
+#| warning: false
+p <- badania |> 
+  ggplot(aes(x = heartRate)) +
+  geom_density(color = "#6AAED9", lwd = 1.2) +
+  stat_function(
+    fun = dnorm,
+    args = list(mean = mean(badania$heartRate), sd = sd(badania$heartRate)),
+    linewidth = 1.2,
+    col = "#F25041"
+  ) +
+  theme_ipsum_rc()
+p
+```
+
+```{r}
+#| warning: false
+p1 <- badania |> 
+  ggplot(aes(x = TenYearCHD, y = heartRate, color = sex)) +
+  geom_boxplot() +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p2 <- badania |> 
+  ggplot(aes(x = TenYearCHD, y = heartRate, color = currentSmoker)) +
+  geom_boxplot() +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p3 <- badania |> 
+  ggplot(aes(x = TenYearCHD, y = heartRate, color = BPMeds)) +
+  geom_boxplot() +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p1; p2; p3
+```
+
+::: panel-tabset
+#### 
+:::
+
+#### BPMeds, a ciśnienie
+
+```{r}
+#| warning: false
+p1 <- badania |> 
+  ggplot(aes(x = sysBP, color = BPMeds)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p2 <- badania |> 
+  ggplot(aes(x = diaBP, color = BPMeds)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p1;p2
+```
+
+::: panel-tabset
+:::
+
+#### Skutki palenia na układ krążenia
+
+```{r}
+osoby_palace <- badania |> 
+  subset(currentSmoker == "Yes")
+
+osoby_niepalace <- badania |> 
+  subset(cigsPerDay == 0)
+
+nrow(osoby_palace)
+nrow(osoby_niepalace)
+```
+
+```{r}
+#| warning: false
+
+p1 <- badania |> 
+  ggplot(aes(x = currentSmoker)) +
+  geom_bar() +
+  theme_ipsum_rc()
+
+p2 <- badania |> 
+  ggplot(aes(x = cigsPerDay)) +
+  geom_bar() +
+  theme_ipsum_rc()
+
+p1; p2
+```
 
 ### Relacja pomiędzy zmienną `age`, a zmienną `cigsPerDay`
 
