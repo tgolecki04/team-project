@@ -644,32 +644,52 @@ ggsave("images/plots/range_density.jpg", p)
 
 ```{r}
 #| warning: false
-p <- badania |> 
+p1 <- badania |> 
   ggplot(aes(x = TenYearCHD, y = sysBP, color = sex)) +
   geom_boxplot() +
   theme_ipsum_rc() +
   scale_color_manual(values = c("#6AAED9", "#F2A391"))
 
+p2 <- badania |> 
+  ggplot(aes(x = TenYearCHD, y = diaBP, color = sex)) +
+  geom_boxplot() +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p1; p2
 ```
 
 ```{r}
 #| warning: false
 
-p3 <- badania |> 
+p1 <- badania |> 
   ggplot(aes(x = sysBP, color = TenYearCHD)) +
   geom_density(lwd = 1.2) +
   theme_ipsum_rc() +
   scale_color_manual(values = c("#6AAED9", "#F2A391"))
 
+p2 <- badania |> 
+  ggplot(aes(x = diaBP, color = TenYearCHD)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
 ```
 
 ### Analiza wartości tętna
 
 ```{r}
 #| warning: false
-p <- badania |> 
-  ggplot(aes(x = heartRate, fill = TenYearCHD)) +
-  geom_histogram(binwidth = 5) +
+bins <- seq(min(badania$heartRate), max(badania$heartRate), length.out = 16)
+
+hist_data <- badania %>%
+  mutate(bin = cut(heartRate, breaks = bins, include.lowest = TRUE)) %>%
+  count(TenYearCHD, bin) %>%
+  mutate(count_adj = ifelse(TenYearCHD == "No", n, -n))
+# odwrócenie grupy B
+p <- hist_data |> 
+  ggplot(aes(x = bin, y = count_adj, fill = TenYearCHD)) +
+  geom_col(position = "identity") +
+  labs(y = "Liczebność w grupie", x = "Przedziały") +
   theme_ipsum_rc() +
   scale_fill_manual(values = c("#6AAED9", "#F2A391"))
 p
@@ -713,10 +733,6 @@ p3 <- badania |>
 p1; p2; p3
 ```
 
-::: panel-tabset
-#### 
-:::
-
 #### BPMeds, a ciśnienie
 
 ```{r}
@@ -736,9 +752,6 @@ p2 <- badania |>
 p1;p2
 ```
 
-::: panel-tabset
-:::
-
 #### Skutki palenia na układ krążenia
 
 ```{r}
@@ -756,19 +769,205 @@ nrow(osoby_niepalace)
 #| warning: false
 
 p1 <- badania |> 
-  ggplot(aes(x = currentSmoker)) +
-  geom_bar() +
+  ggplot(aes(x = currentSmoker, fill = currentSmoker)) +
+  geom_bar(fill = c("#6AAED9", "#F2A391"), width = 0.4) +
   theme_ipsum_rc()
 
 p2 <- badania |> 
+  ggplot(aes(x = currentSmoker, fill = sex)) +
+  geom_bar(position = "dodge") +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+
+p3 <- badania |> 
+  ggplot(aes(x = currentSmoker, fill = TenYearCHD)) +
+  geom_bar(position = "dodge") +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+
+p1; p2; p3
+```
+
+```{r}
+#| warning: false
+p1 <- badania |> 
   ggplot(aes(x = cigsPerDay)) +
-  geom_bar() +
+  geom_bar(fill = "#6AAED9") +
+  theme_ipsum_rc()
+
+
+p2 <- osoby_palace |> 
+  ggplot(aes(x = cigsPerDay)) +
+  geom_bar(fill = "#6AAED9") +
   theme_ipsum_rc()
 
 p1; p2
 ```
 
+```{r}
+#| warning: false
+paczki <- badania |> 
+  group_by(cigsPerDay, TenYearCHD) |> 
+  summarise(n = n(), .groups = "drop") |> 
+  group_by(cigsPerDay) |>
+  mutate(perc = n / sum(n) * 100)
+
+p1 <- paczki[1:28, ] |> 
+  ggplot(aes(x = factor(cigsPerDay), y = n, fill = factor(TenYearCHD))) +
+  geom_col(position = position_dodge(width = 0.8)) +
+  labs(
+    x = "Cigarettes per Day",
+    y = "Liczba osób",
+    fill = "TenYearCHD"
+  ) +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+
+p2 <- paczki[3:28, ] |> 
+  ggplot(aes(x = factor(cigsPerDay), y = n, fill = factor(TenYearCHD))) +
+  geom_col(position = position_dodge(width = 0.8)) +
+  labs(
+    x = "Cigarettes per Day",
+    y = "Liczba osób",
+    fill = "TenYearCHD"
+  ) +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+
+p3 <- paczki[29:nrow(paczki), ] |> 
+  ggplot(aes(x = factor(cigsPerDay), y = n, fill = factor(TenYearCHD))) +
+  geom_col(position = position_dodge(width = 0.8)) +
+  labs(
+    x = "Cigarettes per Day",
+    y = "Liczba osób",
+    fill = "TenYearCHD"
+  ) +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+
+p1; p2; p3
+
+
+```
+
+```{r}
+#| warning: false
+paczki_procenty <- badania |> 
+  group_by(cigsPerDay) |> 
+  mutate(cigsSum = n()) |> 
+  subset(cigsSum > 20) |> 
+  group_by(cigsPerDay, TenYearCHD) |> 
+  summarise(n = n(), .groups = "drop") |> 
+  group_by(cigsPerDay) |>
+  mutate(perc = n / sum(n) * 100)
+  
+p1 <- paczki_procenty |>
+  ggplot(aes(x = factor(cigsPerDay),
+  y = perc,
+  fill = factor(TenYearCHD)
+)) +
+  geom_col() +
+  labs(
+    x = "Cigarettes per Day",
+    y = "Procent",
+    fill = "Ten-Year CHD"
+  ) +
+  theme_ipsum_rc() +
+  scale_fill_manual(values = c("#6AAED9", "#F2A391"))
+
+p1
+```
+
 ### Relacja pomiędzy zmienną `age`, a zmienną `cigsPerDay`
+
+```{r}
+#| warning: false
+p1 <- badania |> 
+  ggplot(aes(y = age, color = currentSmoker)) +
+  geom_boxplot(lwd = 0.8) +
+  theme_ipsum_rc() +
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p2 <- badania |> 
+  ggplot(aes(x = age, color = currentSmoker)) +
+  geom_density(lwd = 1.2) +
+  theme_ipsum_rc() + 
+  scale_color_manual(values = c("#6AAED9", "#F2A391"))
+
+p1; p2
+```
+
+```{r}
+#| warning: false
+paczki_mean <- badania |> 
+  group_by(cigsPerDay) |> 
+  mutate(
+    cigsSum = n(),
+    sysBP_mean = mean(sysBP),
+    diaBP_mean = mean(diaBP)
+  ) |> 
+  subset(cigsSum > 50)
+
+p <- paczki_mean |> 
+  ggplot(aes(x = cigsPerDay)) +
+  geom_line(aes(y = diaBP_mean), lwd = 1.2, color = "#6AAED9") +
+  geom_line(aes(y = sysBP_mean), lwd = 1.2, color = "#F2A391") +
+  theme_ipsum_rc()
+
+p
+```
+
+```{r}
+#| warning: false
+library(VennDiagram)
+library(ggVennDiagram)
+ggVennDiagram(list(
+  Udar = which(badania$prevalentStroke == "Yes"),
+  Nadcisnienie = which(badania$prevalentHyp == "Yes"),
+  Ryzyko = which(badania$TenYearCHD== "Yes")
+), set_size = 2.5) +
+  theme_minimal() + 
+  scale_fill_gradient(low = "#6AAED9", high = "#F2A391") +
+  theme(legend.position = "none")
+
+colnames(badania)
+
+```
+
+```{r}
+str(badania)
+
+logit_model <- glm(TenYearCHD ~ age + sex + education + sysBP + diaBP + heartRate + BMI +
+                     totChol + glucose + diabetes + cigsPerDay + currentSmoker + BPMeds +
+                     prevalentStroke + prevalentHyp,
+                   data = badania,
+                   family = binomial(link = "logit"))
+
+summary(logit_model)
+
+exp(coef(logit_model))
+
+step_model <- step(logit_model, direction = "both")
+summary(step_model)
+
+badania$pred_prob <- predict(logit_model, type = "response")
+badania$pred_class <- ifelse(badania$pred_prob > 0.2, 1, 0)
+badania$pred_class <- factor(badania$pred_class, labels = c("No", "Yes"))
+
+library(pROC)
+roc_obj <- roc(badania$TenYearCHD, badania$pred_prob)
+plot(roc_obj)
+auc(roc_obj)
+
+
+library(car)
+vif(logit_model)
+
+table(Predicted = badania$pred_class, Actual = badania$TenYearCHD)
+
+accuracy <- mean(badania$pred_class == badania$TenYearCHD)
+accuracy
+```
 
 ```{r}
 
