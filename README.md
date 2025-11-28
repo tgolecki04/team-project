@@ -7,6 +7,9 @@
   palenie, przyjmowane leki oraz poziom cholesterolu. Projekt zakłada stworzenie minimum 2 modeli predykcyjnych, przykładowo pierwszy oparty na Neural Networks, 
   a kolejny na Gradient Boosting.</p>
 
+## Kopletna analiza
+<a href=https://tgolecki04.github.io/team-project/>Wczesne Wykrywanie Ryzyka Zawału Serca</a>
+
 ## Użyte technologie
 <p>Zaawansowana analiza danych w języku R. Stworzenie kilku modeli predykcyjnych w R lub Python. Wykorzystanie Quarto do stworzenia spójnego i przejrzystego 
   połączenia części teoretycznych i praktycznych projektu.</p>
