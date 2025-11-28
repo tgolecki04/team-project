@@ -3,7 +3,7 @@
 
 ## Informacje ogólne
 <p>Projekt z zakresu analizy danych. Głównym założeniem projektu jest stworzenie nieliniowych modeli predykcyjnych zdolnych do skutecznego 
-  przewidywania potencjalnego zawału serca w najbliższych 10 latach na podstawie czynników między innymi takich jak płeć, wiek, palenie, 
+  przewidywania potencjalnego zawału serca w najbliższych 10 latach na podstawie czynników między innymi takich jak płeć, wiek, palenie, poziom glukozy, 
   przyjmowane leki oraz poziom cholesterolu. Projekt zakłada stworzenie minimum 2 modeli predykcyjnych, przykładowo pierwszy oparty na Neural Networks, 
   a kolejny na Gradient Boosting.</p>
 
