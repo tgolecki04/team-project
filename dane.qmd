@@ -8,7 +8,7 @@ warning: false
 
 ## Rozpoczęcie
 
-Koniec z Lorem Ipsum. Test GitHub Desktop.
+W tej częsci projektu skupimy się na pracy z naszymi danymi. Zapoznamy się z ich strukturą oraz właściwościami. Poznamy podstawowe statystyki wyjaśniające dokładnie każdą ze zmiennych. Pozwoli nam to na wysnucie pewnych przypuszczeń, które postaramy się zbadać i wyjaśnić za pomocą analizy i wizualizacji. Dodatkowo przeprowadzimy odpowiednie testy statystyczne, aby dokładniej określić właściwości naszych zmiennych, m. in. różnicę wartości średniej w grupach oraz istotność zmiennych. Postaramy się odpowiedzień na wcześniej postawione hipotezy i poszerzyć odpowiedź o informacje zdobyte podczas analizy. Po przeprowadzeniu wszystkich etapów związanych z pracą nad danymi przejdziemy do tworzenia modeli predykcyjnych i obliczaniu ich statystyk. Podczas projektu użyliśmy następujących bibliotek.
 
 ## Biblioteki
 
@@ -330,7 +330,7 @@ write.csv(badania, file = "badania.csv")
 
 ## Analiza Danych
 
-W trakcie wykonowynia wizualizacji bedziemy posługiwać się pacjentami, których traktujemy jako tych, którzy nie są w grupie zagrożenia oraz tych, którzy w tej grupie są. Dla ułatwienia przeprowadzania operacji stworzymy dwie ramki danych `zdrowi` oraz `chorzy` aby odwoływać się do tych grup bezpośrednio.
+W trakcie wykonywynia wizualizacji bedziemy posługiwać się pacjentami, których traktujemy jako tych, którzy nie są w grupie zagrożenia oraz tych, którzy w tej grupie są. Dla ułatwienia przeprowadzania operacji stworzymy dwie ramki danych `zdrowi` oraz `chorzy` aby odwoływać się do tych grup bezpośrednio.
 
 ```{r}
 badania <- mutate(badania, ID = 1:nrow(badania))
@@ -539,6 +539,12 @@ Ze względu na dużą liczbę rekordów, punkty zaznaczone na wykresie typu `sca
 
 ### Ciśnienie rozkurczowe
 
+Ciśnienie rozkurczowe to **niższa wartość ciśnienia krwi**, mierzona gdy serce **rozluźnia się między uderzeniami** i napełnia krwią. Jego prawidłowa wartość u osób dorosłych wynosi zwykle około **60-80 mmHg.** Ciśnienie rozkurczowe jest istotnym parametrem mówiącym nam w jaki sposób działa serce. Zdarzają się jednak odstępstwa od prawidłowej pracy serca.
+
+Zbyt wysokie ciśnienie może świadczyć o **nadciśnieniu**, natomiast zbyt niskie o **niedociśnieniu.** Sytuacje te są niebezpieczne dla naszego życia i zdrowia, dlatego w takim przypadku pacjent powinien systematycznie się badać oraz przyjmować odpowiednie leki. Zaburzenia pracy serca objawiające się zawyżoną lub zaniżoną wartością ciśnienia mogą być istotną przyczyną zawału serca.
+
+Sprawdźmy jak wygląda rozkład wartości ciśnienia rozkurczowego względem płci.
+
 ```{r}
 #| label: diaBP
 p1 <- ggplot(badania, aes(x = diaBP, color = sex)) +
@@ -581,7 +587,11 @@ ggsave("images/plots/diaBP_byCurrentSmoker.jpg", p3)
 ![](images/plots/diaBP_byCurrentSmoker.jpg){fig-align="center"}
 :::
 
-::analiza::
+Analizująć powyższe wykresy dotyczące rozkładu zmiennej `sysyBP` możemy określić następujące wnioski:
+
+-   Rozkłady zmiennej ze względu na płeć są do siebie zbliżone. Są one delikatnie prawostronnie asymetryczne, jednocześnie kobiety mają tendencję do przyjmowania lekko niższych wartości podczas badania.
+
+-   Podział na poziom wykształcenia mówi nam, że rozkłady są między sobą analogiczne z drobnymi odstępstwami. Dla wartości ciśnienia równych około 70mmHg do 80mmHg czyli wartości najczęstszych, większą gęstość mają grupy wykształcenia 3 oraz 4. Widzimy, że osoby z wyższym wykształceniem minimalnie częściej posiadają niższą wartość ciśnienia.
 
 ### Ciśnienie skurczowe
 
@@ -630,6 +640,13 @@ ggsave("images/plots/sysBP_byCurrentSmoker.jpg", p3)
 :::
 
 analiza::
+
+```{r}
+badania |> 
+  ggplot(aes(y = diaBP, color = education)) +
+  geom_boxplot() +
+  theme_ipsum_rc()
+```
 
 ### Zakres pracy serca, a ryzyko zawału
 
