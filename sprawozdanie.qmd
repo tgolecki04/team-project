@@ -1,24 +1,14 @@
 ---
 title: "LateX"
+toc: false
 ---
 
-## Quarto
+## Sprawozdanie
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+<a href="reports/document.pdf" download style="padding:15px 30px; font-size:18px; background-color:#4CAF50; color:white; border-radius:8px; text-decoration:none; display:inline-block;">📄 Pobierz PDF</a>
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+![](reports/pdf2png/document/document-1.png){fig-align="center"}
 
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+![](reports/pdf2png/document/document-2.png){fig-align="center"}

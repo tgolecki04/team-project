@@ -8,7 +8,7 @@ warning: false
 
 ## Rozpoczęcie
 
-W tej częsci projektu skupimy się na pracy z naszymi danymi. Zapoznamy się z ich strukturą oraz właściwościami. Poznamy podstawowe statystyki wyjaśniające dokładnie każdą ze zmiennych. Pozwoli nam to na wysnucie pewnych przypuszczeń, które postaramy się zbadać i wyjaśnić za pomocą analizy i wizualizacji. Dodatkowo przeprowadzimy odpowiednie testy statystyczne, aby dokładniej określić właściwości naszych zmiennych, m. in. różnicę wartości średniej w grupach oraz istotność zmiennych. Postaramy się odpowiedzień na wcześniej postawione hipotezy i poszerzyć odpowiedź o informacje zdobyte podczas analizy. Po przeprowadzeniu wszystkich etapów związanych z pracą nad danymi przejdziemy do tworzenia modeli predykcyjnych i obliczaniu ich statystyk. Podczas projektu użyliśmy następujących bibliotek.
+W tej części projektu skupimy się na pracy z naszymi danymi. Zapoznamy się z ich strukturą oraz właściwościami. Poznamy podstawowe statystyki wyjaśniające dokładnie każdą ze zmiennych. Pozwoli nam to na wysnucie pewnych przypuszczeń, które postaramy się zbadać i wyjaśnić za pomocą analizy i wizualizacji. Dodatkowo przeprowadzimy odpowiednie testy statystyczne, aby dokładniej określić właściwości naszych zmiennych, m. in. różnicę wartości średniej w grupach oraz istotność zmiennych. Postaramy się odpowiedzień na wcześniej postawione hipotezy i poszerzyć odpowiedź o informacje zdobyte podczas analizy. Po przeprowadzeniu wszystkich etapów związanych z pracą nad danymi przejdziemy do tworzenia modeli predykcyjnych i obliczaniu ich statystyk. Podczas projektu użyliśmy następujących bibliotek.
 
 ## Biblioteki
 
@@ -325,7 +325,7 @@ round(data.frame(t(statystyki_po))[c(2:9,10:12), ], 3)
 Sprawdzając podstawowe statystki widzimy, że uzupełniając dane zachowaliśmy ich strukturę. Różnica pomiędzy wartościami statystyk polega najczęściej na zmianie części tysięcznych lub setnych, więc wartości `NA` zostały bardzo dobrze odwzorowane. Teraz możemy wykonać analizę wstępną naszego zbioru danych, aby następnie przejść do stworzenia modeli predykcyjnych oraz głębszej analizy. Ostatnim punktem pracy nad modyfikowaniem naszych danych jest zapisanie oszyszczonych i uzupełnionych danych do pliku `.csv`, który wykorzystamy m. in. podczas tworzenia modeli w języku programowania `R` lub `python.`
 
 ```{r}
-write.csv(badania, file = "badania.csv")
+write.csv(badania, file = "data/clean_data.csv")
 ```
 
 ## Analiza Danych
