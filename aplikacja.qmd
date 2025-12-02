@@ -277,7 +277,4 @@ editor: visual
     });
   });
 </script>
-<<<<<<< Updated upstream
-=======
 ```
->>>>>>> Stashed changes

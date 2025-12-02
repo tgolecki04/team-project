@@ -267,7 +267,7 @@
     "href": "aplikacja.html",
     "title": "Aplikacja",
     "section": "",
-    "text": "Ankieta sprawdzająca ryzyko wystąpienia zawału serca\n  \n  \n    \n      \n        Płeć:\n        \n          Wybierz...\n          Mężczyzna\n          Kobieta\n        \n      \n      \n        Wiek:\n        \n      \n      \n        Czy jest palaczem:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Ile papierosów dziennie:\n        \n      \n      \n        Czy aktualnie leczy się na nadciśnienie:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Czy przeżył udar:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Czy występowało nadciśnienie:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Czy jest cukrzykiem:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Poziom cholesterolu we krwi (mg/dL):\n        \n      \n      \n        Ciśnienie skurczowe (mm Hg):\n        \n      \n      \n        Ciśnienie rozkurczowe (mm Hg):\n        \n      \n      \n        Współczynnik BMI:\n        \n      \n      \n        Tętno (uderzeń/min):\n        \n      \n      \n        Poziom glukozy we krwi (mg/dL):\n        \n      \n    \n  \n  \n  \n  \n\n\n\n\n\n\n\n Back to top"
+    "text": "Ankieta sprawdzająca ryzyko wystąpienia zawału serca\n  \n  \n    \n      \n        Płeć:\n        \n          Wybierz...\n          Mężczyzna\n          Kobieta\n        \n      \n      \n        Wiek:\n        \n      \n      \n        Czy jest palaczem:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Ile papierosów dziennie:\n        \n      \n      \n        Czy aktualnie leczy się na nadciśnienie:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Czy przeżył udar:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Czy występowało nadciśnienie:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Czy jest cukrzykiem:\n        \n          Wybierz...\n          Tak\n          Nie\n        \n      \n      \n        Poziom cholesterolu we krwi (mg/dL):\n        \n      \n      \n        Ciśnienie skurczowe (mm Hg):\n        \n      \n      \n        Ciśnienie rozkurczowe (mm Hg):\n        \n      \n      \n        Współczynnik BMI:\n        \n      \n      \n        Tętno (uderzeń/min):\n        \n      \n      \n        Poziom glukozy we krwi (mg/dL):\n        \n      \n    \n  \n  \n  \n  \n\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream\n=======\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "aplikacja.html#quarto",
@@ -510,7 +510,7 @@
     "text": "Na potrzeby projektu korzystaliśmy z poniższych źródeł:\n\nhttps://www.kaggle.com/\nhttps://www.framinghamheartstudy.org/\nhttps://www.ikard.pl/strefa-pacjenta/warto-wiedziec/choroba-wiencowa.html\nStabilna choroba wieńcowa — epidemiologia, diagnostyka, wybór postępowania, Anna Maria Frycz-Kurek, Piotr Buchta, Janusz Szkodziński\nhttps://www.czytelniamedyczna.pl/2893,choroba-wiencowa-u-kobiet.html\n\nDodatkowo użyliśmy:\n\nHeart icons created by Kroffle - Flaticon\nhttps://quarto.org/\nhttps://bookdown.org/yihui/rmarkdown/html-widgets.html\nhttps://docs.pytorch.org/docs/stable/index.html\nhttps://r4ds.hadley.nz/\nhttps://jakevdp.github.io/PythonDataScienceHandbook/",
     "crumbs": [
       "Strona Główna",
-      "Literatura"
+      "<i class=\"bi bi-dot\"></i>Literatura <i class=\"bi bi-journal-code\"></i>"
     ]
   },
   {
@@ -543,7 +543,7 @@
     "text": "Na potrzeby projektu korzystaliśmy z poniższych źródeł:\n\nhttps://www.kaggle.com/\nhttps://www.framinghamheartstudy.org/\nhttps://www.ikard.pl/strefa-pacjenta/warto-wiedziec/choroba-wiencowa.html\nStabilna choroba wieńcowa — epidemiologia, diagnostyka, wybór postępowania, Anna Maria Frycz-Kurek, Piotr Buchta, Janusz Szkodziński\nhttps://www.czytelniamedyczna.pl/2893,choroba-wiencowa-u-kobiet.html\n\nDodatkowo użyliśmy:\n\nHeart icons created by Kroffle - Flaticon\nhttps://quarto.org/\nhttps://bookdown.org/yihui/rmarkdown/html-widgets.html\nhttps://docs.pytorch.org/docs/stable/index.html\nhttps://r4ds.hadley.nz/\nhttps://jakevdp.github.io/PythonDataScienceHandbook/",
     "crumbs": [
       "Strona Główna",
-      "Literatura"
+      "<i class=\"bi bi-dot\"></i>Literatura <i class=\"bi bi-journal-code\"></i>"
     ]
   },
   {
