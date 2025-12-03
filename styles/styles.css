@@ -1,0 +1,119 @@
+.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+table td, table th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  /* Usunięto justify-content: space-between, aby zapobiec "odjeżdżaniu" zdjęcia na skraj */
+  align-items: center; /* Dopasowuje góry kolumn */
+  gap: 15px; /* Dodaje minimalny odstęp między kolumnami, np. 15px */
+}
+
+/* Kolumna listy (30% szerokości) */
+.list-column {
+  flex-basis: 30%; /* Priorytetowa szerokość bazowa */
+  flex-grow: 0;    /* Nie pozwalamy tej kolumnie rosnąć, zachowuje 30% */
+  margin: 0;/* max-width: 500px;  Ograniczenie maksymalnej szerokości listy (opcjonalne) */
+  min-width: 0;    /* Zapewnia poprawne działanie na mniejszych ekranach */
+}
+
+/* Kolumna zdjęcia (70% szerokości) */
+.image-column {
+  flex-basis: 70%; /* Priorytetowa szerokość bazowa */
+  flex-grow: 1;    /* Pozwalamy tej kolumnie rosnąć, aby wypełnić resztę miejsca */
+  text-align: left; /* Obraz będzie wyrównany do lewej strony swojej kolumny */
+}
+
+/* Stylizacja samego obrazu */
+.image-column img {
+  max-width: 100%; /* Obraz nigdy nie wyjdzie poza swoją kolumnę */
+  height: auto;
+  border-radius: 64px; /* Zaokrąglone rogi, jak chciałeś */
+  display: block; /* Poprawia renderowanie obrazu */
+}
+
+/* Wcięcie dla listy nieuporządkowanej */
+ul {
+  padding-left: 20px;
+  margin: 0; /* Opcjonalnie: usuwa domyślny górny margines listy, żeby była równo z górą zdjęcia */
+}
+
+
+.quarto-title-banner {
+  background-color: #8d99ae !important; /* Zmień na dowolny kolor, np. blue, #00ff00, rgb(255, 100, 50) */
+}
+
+.bi {
+  color: #ef233c;
+}
+
+.btn.code-tools-button{
+  color: #343a40;
+}
+
+.btn.code-tools-button.dropdown-toggle {
+  color: #343a40;
+}
+
+.dropdown-item {
+  color: #343a40 !important;
+}
+
+.menu-text {
+  font-size: 17px;
+  text-align: center;
+  font-weight: bold;
+  
+}
+
+p:has(img) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* usuń WSZYSTKIE marginesy i odstępy tylko wewnątrz .cv */
+.cv .quarto-figure,
+.cv .figure,
+.cv .figure > p,
+.cv figure,
+.cv p:has(img),
+.cv .img-fluid,
+.cv .figure-img {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+/* upewnij się, że obrazki są blokami i wypełniają szerokość */
+.cv .quarto-figure img,
+.cv .figure img,
+.cv img.figure-img,
+.cv img.img-fluid {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* bootstrapowe margin-bottom dla figure */
+.cv figure {
+  margin-bottom: 0 !important;
+}
+
+/* div .quarto-figure nie dodaje odstępów */
+.cv .quarto-figure {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* bezpieczeństwo: wyłączenie ramek obrazków tylko w .cv */
+.cv img {
+  border: 0 !important;
+}
+
+
+

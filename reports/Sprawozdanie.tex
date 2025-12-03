@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}  
+\usepackage[T1]{fontenc}     
+\usepackage[polish]{babel}   
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Sprawozdanie z projektu analizy danych}
+\author{Jan Kowalski}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Wprowadzenie}
+	Celem projektu była analiza zbioru danych dotyczącego sprzedaży diamentów. Badaliśmy zależności między różnymi cechami diamentów, takimi jak masa karatowa, kolor i cena.
+	
+	\section{Opis danych}
+	Zbiór danych zawiera następujące zmienne:
+	\begin{itemize}
+		\item \textbf{carat} -- masa diamentu w karatach,
+		\item \textbf{cut} -- jakość szlifu,
+		\item \textbf{color} -- kolor diamentu,
+		\item \textbf{price} -- cena w dolarach.
+	\end{itemize}
+	
+	\section{Analiza statystyczna}
+	Średnia cena diamentów została obliczona według wzoru:
+	\begin{equation}
+		\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i,
+	\end{equation}
+	gdzie $X_i$ oznacza cenę $i$-tego diamentu, a $n$ liczbę obserwacji.
+	
+	Korelacja pomiędzy masą a ceną obliczana była przy użyciu współczynnika Pearsona:
+	\begin{equation}
+		r = \frac{\sum_{i=1}^{n}(X_i - \bar{X})(Y_i - \bar{Y})}{\sqrt{\sum_{i=1}^{n}(X_i - \bar{X})^2 \sum_{i=1}^{n}(Y_i - \bar{Y})^2}}.
+	\end{equation}
+	
+	\section{Wyniki}
+	Analiza wykazała silną dodatnią korelację między masą diamentów a ich ceną. Oznacza to, że większe diamenty mają tendencję do wyższej ceny.
+	
+	Dodatkowo, regresję liniową ceny na masę można przedstawić w postaci:
+	\begin{equation}
+		\hat{Y} = \beta_0 + \beta_1 X,
+	\end{equation}
+	gdzie $\beta_0$ to wyraz wolny, a $\beta_1$ współczynnik kierunkowy regresji.
+	
+	\section{Wnioski}
+	Analiza danych pozwoliła stwierdzić, że masa diamentu jest kluczowym czynnikiem wpływającym na jego cenę. W przyszłych badaniach warto uwzględnić także interakcje między jakością szlifu i kolorem.
+	
+\end{document}

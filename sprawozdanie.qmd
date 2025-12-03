@@ -1,24 +1,33 @@
 ---
-title: "LateX"
+title: "Zakończenie Projektu"
+toc: false
+number-sections: false
 ---
 
-## Quarto
+## Sprawozdanie
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Najważniejszym etapem całego projektu jest powiązanie ze sobą wszystkich najważniejszych informacji, odpowiedzi na postawione przez nas hipotezy oraz zagadnień teoretycznych w celu stworzenia sprawozdania zawierającego istotne wnioski i wskazówki na temat badanego problemu. Odwołując się do kolejnych części projektu, którymi były:
 
-## Running Code
+1.  Problem teoretyczny
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+2.  Postawienie hipotez
 
-```{r}
-1 + 1
-```
+3.  Praca z danymi
 
-You can add options to executable code like this
+4.  Analiza ekspolracyjna
 
-```{r}
-#| echo: false
-2 * 2
-```
+5.  Stworzenie i ocena modeli
 
-The `echo: false` option disables the printing of code (only output is displayed).
+6.  Wyciągnięcie wniosków
+
+7.  Połączenie całej struktury w całość
+
+przygotowaliśmy notatkę podsumowującą efekty naszej pracy wskazując na najważniejsze elementy w każdym etapie. Zachęcamy do zapoznania się z wynikami projektu zawartymi w pliku `.PDF`, który można pobrać klikając w przycisk poniżej lub przeczytać bezpośrednio na stronie. W trakcie pracy nad projektem mogliśmy wykorzystać wiedzę poznaną na uczelni i rozszerzyć ją o dodatkowe metody i technologie. Bardzo dziękujemy za poświęcony nam czas oraz zachęcamy do kontaktu z nami. W przypadku pytań lub zauważenia nieprawidłowośći prosimy o kontakt przez GitHub lub e-mail. Przed nami jeszcze wiele pracy, ale jesteśmy zdeterminowani, aby zdobywać nowe doświadczenie oraz otwarci na nowe wyzwania.\
+
+::: {.text-center .my-4}
+<a href="reports/Sprawozdanie.pdf" download class="btn btn-success btn-lg"> 📄 Pobierz PDF </a>
+:::
+
+![](reports/pdf2png/document-1.png)
+
+![](reports/pdf2png/document-2.png)

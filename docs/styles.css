@@ -1,3 +1,11 @@
+main.content {
+  width: 100%;
+  max-width: 1600px;   /* możesz zmienić np. na 1400, 1200, 1800 — zależnie jak szeroko chcesz */
+  margin: 0 auto;       /* wyśrodkowanie */
+  padding: 0 20px;      /* odstęp od krawędzi ekranu na telefonach */
+  box-sizing: border-box;
+}
+
 table td, table th {
   vertical-align: middle;
   text-align: center;
@@ -87,4 +95,3 @@ p:has(img) {
 .cv img {
   border: 0 !important;
 }
-
