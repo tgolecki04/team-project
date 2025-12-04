@@ -42,7 +42,7 @@ model = MLPClassifier(
     activation='relu',
     solver='adam',
     learning_rate_init=0.001,
-    max_iter=350,
+    max_iter=320,
     random_state=42
 )
 weights = np.where(y_train_sm==1, 20, 1)
@@ -51,7 +51,7 @@ model.fit(X_train_sm, y_train_sm, sample_weight=weights)
 
 # Wyliczanie prawdopodobieństw
 y_proba = model.predict_proba(X_test)[:, 1]
-threshold = 0.6  # im niżej, tym wyższy recall!!!
+threshold = 0.6 # im niżej, tym wyższy recall!!!
 y_pred = (y_proba >= threshold).astype(int)
 
 #Wyniki
