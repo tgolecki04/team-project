@@ -33,99 +33,74 @@ Model ML analizuje dostarczone mu przykłady, identyfikuje wzorce oraz uczy się
 
 ![](images/article/picture_4.png){fig-align="center" width="683"}
 
-### Gałęzie
+### Poddziedziny
 
-### **Uczenie nadzorowane (Supervised Learning)**
+#### Uczenie nadzorowane (Supervised Learning)
+
+##### Wyjaśnienie
 
 Model uczy się na danych, dla których znamy prawidłową odpowiedź (tzw. etykietę).\
-Celem jest przewidywanie wyników dla nowych, nieznanych danych.\
-Przykłady:
+Celem jest przewidywanie wyników dla nowych, nieznanych danych.
 
--   
+##### Przykłady
 
--   
+-   Klasyfikacja (np. wykrywanie spamu, diagnoza chorób),
 
-    klasyfikacja (np. wykrywanie spamu, diagnoza chorób),
+-   Regresja (np. prognoza cen, przewidywanie popytu).
 
--   
+#### Uczenie nienadzorowane (Unsupervised Learning)
 
--   
+##### Wyjaśnienie
 
-    regresja (np. prognoza cen, przewidywanie popytu).
+Model szuka struktury w danych bez etykiet. Celem jest odkrywanie ukrytych zależności, grup lub reprezentacji danych.
 
--   
+##### Przykłady
 
-### 2. **Uczenie nienadzorowane (Unsupervised Learning)**
+-   Klasteryzacja
 
-Model szuka struktury w danych bez etykiet. Celem jest odkrywanie ukrytych zależności, grup lub reprezentacji danych.\
-Przykłady:
+-   Redukcja Wymiarów
 
--   
+#### Uczenie półnadzorowane (Semi-Supervised Learning)
 
--   
-
-    klasteryzacja (np. segmentacja klientów),
-
--   
-
--   
-
-    redukcja wymiarów (np. PCA),
-
--   
-
--   
-
-    wykrywanie anomalii.
-
--   
-
-### 3. **Uczenie ze wzmocnieniem (Reinforcement Learning)**
-
-Agent uczy się poprzez interakcję z otoczeniem, otrzymując nagrody lub kary.\
-Celem jest opracowanie strategii maksymalizującej długoterminową nagrodę.\
-Przykłady:
-
--   
-
--   
-
-    sterowanie robotami,
-
--   
-
--   
-
-    autonomiczne pojazdy,
-
--   
-
--   
-
-    gry (np. AlphaGo).
-
--   
-
-### 4. **Uczenie półnadzorowane (Semi-Supervised Learning)**
+##### Wyjaśnienie
 
 Połączenie uczenia nadzorowanego i nienadzorowanego – model uczy się na niewielkiej ilości danych z etykietami i dużej ilości danych bez nich.
 
-### 5. **Uczenie samonadzorowane (Self-Supervised Learning)**
+#### Uczenie ze wzmocnieniem (Reinforcement Learning)
 
-Model sam generuje „pseudo-etykiety” z danych, aby uczyć się ich reprezentacji.\
-Stosowane głównie w:
+##### Wyjaśnienie
 
--   
+Agent uczy się poprzez interakcję z otoczeniem, otrzymując nagrody lub kary.\
 
--   
+Celem jest opracowanie strategii maksymalizującej długoterminową nagrodę.
 
-    przetwarzaniu języka naturalnego (np. BERT),
+##### Przykłady
 
--   
+-   Gry
 
--   
+-   Sterowanie robotami
 
-    analizie obrazu (np. autoenkodery).
+-   Autonomiczne pojazdy
+
+#### Uczenie głębokie (Deep Learning)
+
+Model wykorzystuje sieci składające się z wielu warstw przetwarzających dane. Dzięki takiemu zastosowaniu jesteśmy w stanie znajdować głębokie wzorce i zależności, które nie są możliwe do zauważenia stosując pozostałe architektury modeli. Sieć nazywamy "głęboką" ponieważ ma wiele poziomów. Wyróżniamy:
+
+-   warstwę wejściową
+
+-   wiele warstw ukrytych
+
+-   warstwę wyjściową
+
+Każda warstwa przetwarza dane w inny sposób co pozwala na połączenie skomplikowanych obliczeń i wykrycie ważnych oraz skomplikowanych zależności.
+
+##### Przykłady
+
+**CNN (Convolutional Neural Networks)** – do obrazów, wideo, sygnałów.
+
+**RNN (Recurrent Neural Networks)**, **LSTM**, **GRU** – do sekwencji, tekstu, sygnałów czasowych.
+
+**Transformers** – obecny standard w NLP, analizie języka, obrazu i wielu innych dziedzinach.
 
 <div>
 

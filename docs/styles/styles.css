@@ -46,7 +46,13 @@ ul {
 
 
 .quarto-title-banner {
-  background-color: #8d99ae !important; /* Zmień na dowolny kolor, np. blue, #00ff00, rgb(255, 100, 50) */
+  background-color: #b42f28 !important; /* Zmień na dowolny kolor, np. blue, #00ff00, rgb(255, 100, 50) */
+}
+
+.nav-item .nav-link,
+.nav-item .nav-link .menu-text,
+.nav-item .nav-link i {
+    color: white !important;
 }
 
 .bi {
@@ -71,6 +77,78 @@ ul {
   font-weight: bold;
   
 }
+
+
+/* HERO IMAGE — pełny ekran */
+.hero-wrapper {
+  position: absolute;   /* NIE fixed — dzięki temu znika po scrollu */
+  top: 0px; 
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;        /* przykrywa sidebar i navbar */
+  margin-bottom: 0px;
+}
+
+/* Samo zdjęcie */
+.hero-fullscreen {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+
+#quarto-sidebar{
+  margin-top: calc(100vh - 60px);
+}
+/* Treść zaczyna się dopiero pod zdjęciem */
+#start {
+  margin-top: calc(95vh - 60px);      /* odsunięcie treści w dół */
+}
+
+/* Sidebar musi być POD hero image */
+.sidebar, .quarto-sidebar {
+  z-index: 1 !important;
+  position: relative;
+}
+
+.hero-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  padding: 20px 50px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.45);
+  border: 3px solid white;
+  border-radius: 12px;
+
+  transition: 0.3s ease;
+  z-index: 10000; /* ponad hero */
+
+/* opcjonalnie ładna czcionka */
+  backdrop-filter: blur(5px);
+}
+
+.hero-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+
+
 
 p:has(img) {
   margin: 0 !important;

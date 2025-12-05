@@ -79,4 +79,6 @@ format:
     code-fold: show
     code-tools: true
     code-summary: "Pokaż/Ukryj Kod"
+    anchor-sections: true
+    smooth-scroll: true
 df-print: kable
